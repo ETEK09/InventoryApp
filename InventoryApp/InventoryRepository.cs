@@ -4,7 +4,6 @@ using System.Data;
 
 namespace InventoryApp
 {
-    //The IDbconnection represents a connection to the datanase. 
     public class InventoryRepository : IInventoryRepository
     {
         private readonly IDbConnection _conn;
@@ -17,9 +16,8 @@ namespace InventoryApp
         public IEnumerable<Inventory>GetAllInventory() 
         {
 
-            return _conn.Query<Inventory>("SELECT * from Inventory");
+            return _conn.Query<Inventory>("SELECT * FROM Inventory");        
         
         }
-
     }
 }
