@@ -4,23 +4,22 @@ using System.Data;
 
 namespace InventoryApp
 {
-
-    //The repository class acts as a mediator between the 
+    //The IDbconnection represents a connection to the datanase. 
     public class InventoryRepository : IInventoryRepository
     {
-        private readonly IDbConnection _conn; ///This field is used to manage connection to a database
-       
-       public InventoryRepository(IDbConnection conn)
+        private readonly IDbConnection _conn;
+
+        public InventoryRepository(IDbConnection conn)
         {
             _conn = conn;
         }
 
+        public IEnumerable<Inventory>GetAllInventory() 
+        {
 
-        public IEnumerable<Inventory> GetAllInventory()
-      {
-            return _conn.Query<Inventory>("SELECT * FROM Inventory");
-
-      }
+            return _conn.Query<Inventory>("SELECT * from Inventory");
+        
+        }
 
     }
 }

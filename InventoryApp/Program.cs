@@ -7,18 +7,6 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddScoped<IDbConnection>((s) =>
-{
-    IDbConnection conn = new
-    MySqlConnection(builder.Configuration.GetConnectionString("inventory_test"));
-    conn.Open();
-    return conn;
-
-});
-
-builder.Services.AddTransient<IInventoryRepository, InventoryRepository>();
-
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
