@@ -11,10 +11,11 @@ builder.Services.AddScoped<IDbConnection>((s) =>
 {
     IDbConnection conn = new MySqlConnection(builder.Configuration.GetConnectionString("inventory_test"));
     conn.Open();
-    return conn;
+         return conn;
 });
 
 builder.Services.AddTransient<IInventoryRepository, InventoryRepository>();
+
 
 var app = builder.Build();
 

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Inventory>
 
     <h2>Inventory</h2>
-    <table class ="table">
+    <table class="table">
         <tr>
             <th>ProductID</th>
             <th>InventoryTag</th>
@@ -12,17 +12,17 @@
             <th>Custodian</th>
         </tr>
 
-        
-    @foreach (var inventory in @Model)
-    {
-        <tr>
-            <td>@inventory.ProductID</td>
-            <td>@inventory.InventoryTag</td>
-            <td>@inventory.ProductName</td>
-            <td>@inventory.Description</td>
-            <td>@inventory.DateAssigned.ToString("d")</td>
-            <td>@inventory.Distributor</td>
-            <td>@inventory.Custodian</td>
-        </tr>
-    }
-</table>
+        @foreach (var inventory in Model)
+        {
+            <tr>
+                <td>@inventory.ProductID</td>
+                <td>@inventory.InventoryTag</td>
+                <td>@inventory.ProductName</td>
+                <td>@inventory.Description</td>
+                <td>@inventory.DateAssigned.ToString("d")</td>
+                <td>@inventory.Distributor</td>
+                <td>@inventory.Custodian</td>
+            </tr>
+        }
+
+    </table>
