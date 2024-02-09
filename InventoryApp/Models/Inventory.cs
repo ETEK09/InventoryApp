@@ -1,16 +1,11 @@
-﻿using System.Globalization;
-
-namespace InventoryApp.Models
+﻿namespace InventoryApp.Models
 {
-
-    //ASP.NET stands for Active Server Pages. It is a frame work developed by Microsoft that allow users to create dynamic applications and services. Users can create scallable, robust, and interactive web pages using programming languages such as C# and VB.NET.//
-    //The Model class represents the shape of the object. It is used to store data in the application. 
+    //ASP.Net stands for Active Server Pages.NET. It was developed by Microsoft for creating dynamic web apps and services. It allows users to create robust, scallable, and interactive applications using programming languages such as C# and VB.NET//
+    //The Model represents the shape of the data and the business logic. It stores and maintains the data in the application//
     public class Inventory
     {
         public int ProductID { get; set; }
-
         public int InventoryTag { get; set; }
-
         public string ProductName { get; set; }
 
         public string Description { get; set; }
@@ -21,5 +16,8 @@ namespace InventoryApp.Models
 
         public string Custodian { get; set; }
 
+
     }
+
+   
 }

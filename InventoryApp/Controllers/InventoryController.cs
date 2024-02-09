@@ -10,11 +10,19 @@ namespace InventoryApp.Controllers
         {
             this.repo = repo;
         }
-
         public IActionResult Index()
         {
-            var inventory = repo.GetALLInventory();
+            var inventory = repo.GetAllInventory();
             return View(inventory);
         }
+
+        public IActionResult ViewInventory(int id) 
+        {
+
+            var inventory = repo.GetInventory(id);
+            return View(inventory);
+        
+        }
+
     }
 }

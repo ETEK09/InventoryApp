@@ -8,15 +8,20 @@ namespace InventoryApp
     {
         private readonly IDbConnection _conn;
 
-        public InventoryRepository(IDbConnection conn) 
+        public InventoryRepository(IDbConnection conn)
         {
-          _conn = conn;
-        
+            _conn = conn;
+
         }
 
-        public IEnumerable<Inventory> GetALLInventory()
+        public IEnumerable<Inventory> GetAllInventory()
         {
-            return _conn.Query<Inventory>("Select * from inventory");
+            return _conn.Query<Inventory>("SELECT * FROM inventory");
+        }
+
+       public Inventory GetInventory(int id)
+        {
+            return _conn.QuerySingle<Inventory>("SELECT * From inventory where Productid = @id", new {id = id });
         }
     }
 }
