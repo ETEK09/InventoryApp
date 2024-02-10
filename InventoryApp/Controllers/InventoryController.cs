@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using InventoryApp.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 
 namespace InventoryApp.Controllers
@@ -6,7 +7,7 @@ namespace InventoryApp.Controllers
     ///The colntroller handles the users request and hands it to the correct view and model
     public class InventoryController : Controller
     {
-        private IInventoryRepository repo;
+        private readonly IInventoryRepository repo;
 
         public InventoryController(IInventoryRepository repo)
         {
@@ -23,6 +24,29 @@ namespace InventoryApp.Controllers
         {
             var inventory =repo.GetInventory(id);
             return View(inventory); 
+        
+        }
+
+        public IActionResult UpdateInventory(int id) 
+        {
+            Inventory inventory = repo.GetInventory(id);
+
+            if (inventory == null) 
+            {
+                return View("Inventory Not Found");
+              
+            }
+
+            return View(inventory);
+        
+        }
+
+        public IActionResult UpdateInventoryToDatabase(Inventory inventory) 
+        {
+        
+            repo.UpdateInventory(inventory);
+
+            return RedirectToAction("ViewInventory", new { id = inventory.ProductID });
         
         }
     }

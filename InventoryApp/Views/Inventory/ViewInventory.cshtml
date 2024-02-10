@@ -1,6 +1,6 @@
 ﻿@model Inventory
 
-<h3>@Model.ProductName</h3>
+<h3>Tag# @Model.InventoryTag</h3>
 <table class="table">
     <tr>
         <th>ProductId</th>
@@ -17,9 +17,16 @@
             <td>@Model.InventoryTag</td>
             <td>@Model.ProductName</td>
             <td>@Model.Description</td>
+            <td>@Model.DateAssigned</td>
             <td>@Model.Distributor</td>
             <td>@Model.Custodian</td>
         </tr>
 
 
-></table>
+    <div style="display:block">
+
+        <a href="/Inventory/UpdateInventory/@Model.ProductID">Update this product</a>
+
+    </div>
+
+</table>

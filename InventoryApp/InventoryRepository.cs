@@ -25,5 +25,12 @@ namespace InventoryApp
             return _conn.QuerySingle<Inventory>("Select * from inventory where productid = @id", new { id = id });
         
         }
+
+        public void UpdateInventory(Inventory inventory) 
+        {
+
+            _conn.Execute("Update inventory SET custodian = @custodian, DateAssigned = @dateassigned, distributor = @distributor Where ProductID = @id", new { custodian = inventory.Custodian, dateAssigned = inventory.DateAssigned, distributor = inventory.Distributor, id = inventory.ProductID });
+        
+        }
     }
 }

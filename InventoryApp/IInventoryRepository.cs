@@ -10,6 +10,8 @@ namespace InventoryApp
 
         Inventory GetInventory(int id);
 
+        void UpdateInventory(Inventory inventory);
+
         
     }
 }
