@@ -11,17 +11,19 @@ namespace InventoryApp
         public InventoryRepository(IDbConnection conn)
         {
             _conn = conn;
-
+            
         }
 
         public IEnumerable<Inventory> GetAllInventory()
         {
-            return _conn.Query<Inventory>("SELECT * FROM inventory");
+            return _conn.Query<Inventory>("SELECT * From Inventory");
         }
 
-       public Inventory GetInventory(int id)
+        public Inventory GetInventory(int id) 
         {
-            return _conn.QuerySingle<Inventory>("SELECT * From inventory where Productid = @id", new {id = id });
+        
+            return _conn.QuerySingle<Inventory>("Select * from inventory where productid = @id", new { id = id });
+        
         }
     }
 }
