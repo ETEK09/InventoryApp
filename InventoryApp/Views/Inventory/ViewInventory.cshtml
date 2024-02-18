@@ -1,32 +1,43 @@
 ﻿@model Inventory
 
-<h3>Tag# @Model.InventoryTag</h3>
+<h2>Tag# @Model.InventoryTag</h2>
+
 <table class="table">
     <tr>
-        <th>ProductId</th>
+        <th>ProductID</th>
         <th>InventoryTag</th>
         <th>ProductName</th>
-        <th>Descripton</th>
+        <th>Description</th>
         <th>DateAssigned</th>
         <th>Distributor</th>
-        <th>Cuatodian</th>
+        <th>Custodian</th>
     </tr>
 
-        <tr>
-            <td>@Model.ProductID</td>
-            <td>@Model.InventoryTag</td>
-            <td>@Model.ProductName</td>
-            <td>@Model.Description</td>
-            <td>@Model.DateAssigned</td>
-            <td>@Model.Distributor</td>
-            <td>@Model.Custodian</td>
-        </tr>
+    <tr>
+        <td>@Model.ProductId</td>
+        <td>@Model.InventoryTag</td>
+        <td>@Model.ProductName</td>
+        <td>@Model.Description</td>
+        <td>@Model.DateAssigned.ToString("MM/dd/yyyy")</td>
+        <td>@Model.Distributor</td>
+        <td>@Model.Custodian</td>
+    </tr>
 
+    <div style="display: block">
 
-    <div style="display:block">
-
-        <a href="/Inventory/UpdateInventory/@Model.ProductID">Update this product</a>
+    <a href="/Inventory/UpdateInventory/@Model.ProductId">Update this Item</a>
 
     </div>
+
+    <div style="display: block">
+
+        @using (Html.BeginForm("DeleteInventory", "Inventory", "Post"))
+        {
+            <input type="hidden" asp-for="ProductId" value="@Model.ProductId" />
+            <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this Item" />
+        }
+    </div>
+
+
 
 </table>

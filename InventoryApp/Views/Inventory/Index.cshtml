@@ -1,28 +1,36 @@
 ﻿@model IEnumerable<Inventory>
-  //views is what the users sees
-    <h2>Inventory</h2>
-    <table class= "table">
+
+    <h2>TDA Inventory</h2>
+
+<div style="display: block">
+    <a href="/Inventory/InsertInventory/">Create a New Item</a>
+</div>
+
+    <table class="table">
+
         <tr>
-            <th>ProductId</th>
-            <th>InventoryTag</th>
-            <th>ProductName</th>
-            <th>Descripton</th>
-            <th>DateAssigned</th>
-            <th>Distributor</th>
-            <th>Cuatodian</th>
+            <td>ProductID</td>
+            <td>InventoryTag</td>
+            <td>ProductName</td>
+            <td>Description</td>
+            <td>DateAssigned</td>
+            <td>Distributor</td>
+            <td>Custodian</td>
         </tr>
 
         @foreach (var inventory in Model)
-        {
-         <tr>
-            <td><a href="/Inventory/ViewInventory/@inventory.ProductID">@inventory.ProductID</a></td>
-            <td>@inventory.InventoryTag</td>
-            <td>@inventory.ProductName</td>
-            <td>@inventory.Description</td>
-            <td>@inventory.DateAssigned.ToString("d")</td>
-            <td>@inventory.Distributor</td>
-            <td>@inventory.Custodian</td>
-        </tr>
 
+        {
+            <tr>
+                <td><a href="/Inventory/ViewInventory/@inventory.ProductId">@inventory.ProductId</a></td>
+                <td>@inventory.InventoryTag</td>
+                <td>@inventory.ProductName</td>
+                <td>@inventory.Description</td>
+                <td>@inventory.DateAssigned.ToString("MM/dd/yyyy")</td>
+                <td>@inventory.Distributor</td>
+                <td>@inventory.Custodian</td>
+            </tr>
+        
         }
-</table>
+
+    </table>
