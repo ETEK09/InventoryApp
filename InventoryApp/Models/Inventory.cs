@@ -1,7 +1,8 @@
 ﻿namespace InventoryApp.Models
 {
-    //ASP.NET stands for Active Server Pgaes.NET. It is a framework developed by Microsoft that allow users to build dynamic wep apps and services. This allow web developers to create scallable, robust, and intereactive web apps using C# and VB.NET
-    //The Model consists of objects that represent the shape of data. It maintains the data of the application.
+    //Active server pages was developed by Microsoft for creating dynamic web apps and services. It was developed to allow users to create robust, scallable, and interactive web applications using VB.NET and C#.
+
+    //The model are objects that represents the shape of the data logic. It stores the data in the application/
     public class Inventory
     {
         public int ProductId { get; set; }
@@ -18,18 +19,6 @@
 
         public string Custodian { get; set; }
 
-        //public bool IsValid()
-        //{
-        //    // Validate required properties
-        //    if (ProductId == 0 || InventoryTag == 0 || string.IsNullOrEmpty(ProductName) || DateAssigned == default(DateTime) || string.IsNullOrEmpty(Distributor) || string.IsNullOrEmpty(Custodian))
-        //    {
-        //        return false;
-        //    }
-
-        //    // Additional validation logic as needed
-
-        //    return true; // All validation criteria passed
-        //}
-
     }
+
 }

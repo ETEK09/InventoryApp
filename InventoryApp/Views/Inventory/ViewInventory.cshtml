@@ -1,12 +1,13 @@
 ﻿@model Inventory
 
-<h2>Tag# @Model.InventoryTag</h2>
+<h2>Inventory# @Model.InventoryTag</h2>
 
 <table class="table">
+
     <tr>
         <th>ProductID</th>
         <th>InventoryTag</th>
-        <th>ProductName</th>
+        <th>Productname</th>
         <th>Description</th>
         <th>DateAssigned</th>
         <th>Distributor</th>
@@ -18,26 +19,15 @@
         <td>@Model.InventoryTag</td>
         <td>@Model.ProductName</td>
         <td>@Model.Description</td>
-        <td>@Model.DateAssigned.ToString("MM/dd/yyyy")</td>
+        <td>@Model.DateAssigned.ToString("d")</td>
         <td>@Model.Distributor</td>
         <td>@Model.Custodian</td>
+        
     </tr>
 
-    <div style="display: block">
-
-    <a href="/Inventory/UpdateInventory/@Model.ProductId">Update this Item</a>
-
-    </div>
-
-    <div style="display: block">
-
-        @using (Html.BeginForm("DeleteInventory", "Inventory", "Post"))
-        {
-            <input type="hidden" asp-for="ProductId" value="@Model.ProductId" />
-            <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this Item" />
-        }
-    </div>
-
+   <div style="display:block">
+       <a href="/Inventory/UpdateInventory/@Model.ProductId">Update this Product</a>
+   </div>
 
 
 </table>
