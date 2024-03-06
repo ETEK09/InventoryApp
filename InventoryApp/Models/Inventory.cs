@@ -1,11 +1,13 @@
 ﻿namespace InventoryApp.Models
 {
-    //Active server pages was developed by Microsoft for creating dynamic web apps and services. It was developed to allow users to create robust, scallable, and interactive web applications using VB.NET and C#.
+    //Active Server Pages net was developed by Microsoft to build dynamic and web apps. and services. It was created for users to build robust, scallable, and interactive websites using program languages such as C# and VB.NET
 
-    //The model are objects that represents the shape of the data logic. It stores the data in the application/
+    //Model is the objects that represent the business logic and data. It stores the data 
+
     public class Inventory
     {
-        public int ProductId { get; set; }
+
+        public int ProductID { get; set; }
 
         public int InventoryTag { get; set; }
 

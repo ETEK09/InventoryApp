@@ -7,10 +7,10 @@ namespace InventoryApp.Controllers
     {
         private readonly IInventoryRepository repo;
 
-        public InventoryController(IInventoryRepository repo)
+        public InventoryController(IInventoryRepository repo) 
         {
             this.repo = repo;
-            
+        
         }
         public IActionResult Index()
         {
@@ -20,10 +20,10 @@ namespace InventoryApp.Controllers
 
         public IActionResult ViewInventory(int id) 
         {
-
+        
             var inventory = repo.GetInventory(id);
             return View(inventory);
-        
+              
         }
 
         public IActionResult UpdateInventory(int id) 
@@ -31,24 +31,24 @@ namespace InventoryApp.Controllers
         
             Inventory inventory = repo.GetInventory(id);
 
-            if(inventory == null) 
+            if(inventory == null)
             {
 
                 return View("Product Not Found");
-            
-            
+
             }
 
-            return View(inventory);
-        
+               return View(inventory);
+             
         }
 
-        public IActionResult UpdateInventoryToDatabase(Inventory inventory) 
+        public IActionResult UpdateInventoryToDataBase(Inventory inventory) 
         {
         
-                repo.UpdateInventory(inventory);
+            repo.UpdateInventory(inventory);
 
-                return RedirectToAction("ViewInventory", new {id = inventory.ProductId});
+            return RedirectToAction("Index", new {productid = inventory.ProductID});
+        
         
         }
     }

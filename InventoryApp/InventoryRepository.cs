@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using InventoryApp.Models;
-using Microsoft.AspNetCore.Mvc;
 using System.Data;
 
 namespace InventoryApp
@@ -14,38 +13,32 @@ namespace InventoryApp
             _conn = conn;
         }
 
-        public IEnumerable<Inventory>GetAllInventory() 
+        public IEnumerable<Inventory> GetAllInventory()
         {
-
-            return _conn.Query<Inventory>("Select * from Inventory");
-            
+            return _conn.Query<Inventory>("Select * from inventory");
         }
 
         public Inventory GetInventory(int id) 
         {
-        
-            return _conn.QuerySingle<Inventory>("Select * from inventory where productid = @id", new {id =id});
-              
+
+            return _conn.QuerySingle<Inventory>("Select * from inventory where productid = @id", new {id = id});
         
         }
 
         public void UpdateInventory(Inventory inventory) 
         {
-        
-          _conn.Execute("Update Inventory SET inventorytag = @inventorytag, custodian = @custodian,  dateassigned = @dateassigned,  distributor = @distributor, productname = @productname, description = @description where productid = @productid", new 
+
+            _conn.Execute("Update inventory SET inventorytag = @inventorytag, custodian = @custodian, dateassigned = @dateassigned, distributor = @distributor, productname = @productname, description = @description where productid = @productid", new
             {
-              inventorytag = inventory.InventoryTag,
-              custodian = inventory.Custodian,
-              dateassigned = inventory.DateAssigned,
-              distributor = inventory.Distributor,
-              productname = inventory.ProductName,
-              description = inventory.Description, 
-              productid = inventory.ProductId
-          
-            });
-        
+                inventorytag = inventory.InventoryTag,
+                custodian = inventory.Custodian,
+                dateassigned = inventory.DateAssigned,
+                distributor = inventory.Distributor,
+                productname = inventory.ProductName,
+                description = inventory.Description,
+                productid = inventory.ProductID,
+            });               
         }
 
     }
-
 }

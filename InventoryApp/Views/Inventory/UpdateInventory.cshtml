@@ -2,32 +2,32 @@
 
 <table class="table">
 
-    <h2>Update Tag#@Model.InventoryTag</h2>
-
-    @using (Html.BeginForm("UpdateInventoryToDatabase","Inventory", "Post"))
+    <h2>Update tag# @Model.InventoryTag</h2>
+    
+    @using (Html.BeginForm("UpdateInventoryToDataBase", "Inventory", "Post"))
     {
-        <input asp-for="ProductId" type="hidden" value="@Model.ProductId"/>
+        <input asp-for="ProductID" type="hidden" value="@Model.ProductID" />
 
         <label asp-for="InventoryTag" class="control-label">Inventory Tag</label>
-        <input type="text" name="InventoryTag" class="form-control" value="@Model.InventoryTag">
-
-        <label asp-for="ProductName" class="control-label">Product Name</label>
-        <input type="text" name="ProductName" class="form-control" value="@Model.ProductName">
-
-        <label asp-for="Description" class="control-label">Desciption</label>
-        <input type="text" name="Description" class="form-control" value="@Model.Description">
-
-        <label asp-for="DateAssigned" class="control-label">Date Assigned</label>
-        <input type="text" name="DateAssigned" class="form-control" value="@Model.DateAssigned">
-
-        <label asp-for="Distributor" class="control-label">Distributor</label>
-        <input type="text" name="Distributor" class="form-control" value="@Model.Distributor">
+        <input type="text" name="InventoryTag" class="form-control" value="@Model.InventoryTag" />
 
         <label asp-for="Custodian" class="control-label">Custodian</label>
         <input type="text" name="Custodian" class="form-control" value="@Model.Custodian"/>
 
-       <input type="submit" value="Update this product" class="btn btn-primary" />
-        
+        <label asp-for="ProductName" class="control-label">Product Name</label>
+        <input type="text" name="ProductName" class="form-control" value="@Model.ProductName" />
+         
+        <label asp-for="Description" class="control-label">Description</label>
+        <input type="text" name="Description" class="form-control" value="@Model.Description"/>
+
+        <label asp-for="DateAssigned" class="control-label">Date Assigned</label>
+        <input type="text" name="DateAssigned" class="form-control" value="@Model.DateAssigned" />
+
+        <label asp-for="Distributor" class="control-label">Distributor</label>
+        <input type="text" name="Distributor" class="form-control" value="@Model.Distributor" />
+
+        <input type="submit" value="Update Product Here" class="btn btn-primary" />
+
     }
 
-</table>
+ </table>
