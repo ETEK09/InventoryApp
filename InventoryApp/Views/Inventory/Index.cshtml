@@ -1,32 +1,33 @@
 ﻿@model IEnumerable<Inventory>
 
-<h2>Inventory</h2>
 
-<table class="table">
+    <h2>Inventory</h2>
 
-    <tr>
-        <th>Product ID</th>
-        <th>Inventory Tag</th>
-        <th>Product Name</th>
-        <th>Description</th>
-        <th>Date Assigned</th>
-        <th>Distributor</th>
-        <th>Custodian</th>
-    </tr>
+    <table class="table">
 
-
-   @foreach (var inventory in Model)
-    {
         <tr>
-            <td><a href="/Inventory/ViewInventory/@inventory.ProductID">@inventory.ProductID</a></td>
-            <td>@inventory.InventoryTag</td>
-            <td>@inventory.ProductName</td>
-            <td>@inventory.Description</td>
-            <td>@inventory.DateAssigned.ToString("d")</td>
-            <td>@inventory.Distributor</td>
-            <td>@inventory.Custodian</td>
-        </tr>           
+            <th>ProductID</th>
+            <th>Inventory Tag</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Date Assigned</th>
+            <th>Distributor</th>
+            <th>Custodian</th>
+        </tr>
 
-   }
+        @foreach (var inventory in Model)
+        {
+            <tr>
+                <td><a href="/Inventory/ViewInventory/@inventory.ProductID">@inventory.ProductID</a></td>
+                <td>@inventory.InventoryTag</td>
+                <td>@inventory.ProductName</td>
+                <td>@inventory.Description</td>
+                <td>@inventory.DateAssigned.ToString("d")</td>
+                <td>@inventory.Distributor</td>
+                <td>@inventory.Custodian</td>
+            </tr>
+                
+        }
 
-</table>
+
+    </table>

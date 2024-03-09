@@ -2,7 +2,8 @@
 
 namespace InventoryApp
 {
-    //Interface has a set of methods that represent common operations for interacting with data such as querying, editing, adding, and deleting records.
+
+    ///The Interface declares a set of methods that represent the common operations interacting with data such as querying, editing, adding, and deleting records.
     public interface IInventoryRepository
     {
         public IEnumerable<Inventory> GetAllInventory();
