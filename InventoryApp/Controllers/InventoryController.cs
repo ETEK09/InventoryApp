@@ -1,6 +1,6 @@
 ﻿using InventoryApp.Models;
-using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 
 namespace InventoryApp.Controllers
 {
@@ -11,6 +11,7 @@ namespace InventoryApp.Controllers
         public InventoryController(IInventoryRepository repo)
         {
             this.repo = repo;
+            
         }
         public IActionResult Index()
         {
@@ -18,37 +19,40 @@ namespace InventoryApp.Controllers
             return View(inventory);
         }
 
-        public IActionResult ViewInventory(int id)
+        public IActionResult ViewInventory(int id) 
         {
+
             var inventory = repo.GetInventory(id);
             return View(inventory);
-
+        
+        
         }
 
-        public IActionResult UpdateInventory(int id) 
+
+        public IActionResult UpdateInventory (int id) 
         {
+
             Inventory inventory = repo.GetInventory(id);
 
             if(inventory == null) 
             {
             
-              return View("Item not found");
-            
+                return View("Item not found");
             
             }
-
             return View(inventory);
         
-        
         }
 
-        public IActionResult UpdateInventoryToDatabase (Inventory inventory)
+
+        public IActionResult UpdateInventoryToDatabase (Inventory inventory) 
         {
+
             repo.UpdateInventory(inventory);
 
-           return RedirectToAction("ViewInventory", new {id = inventory.ProductID});
-
+            return RedirectToAction("ViewInventory", new {id = inventory.ProductID});
+        
+        
         }
-
     }
 }
