@@ -4,7 +4,7 @@
 
 <table class="table">
 
-    @using (Html.BeginForm("UpdateInventoryToDatabase", "Inventory", "Post"))
+    @using (Html.BeginForm("InsertInventoryToDatabase", "Inventory", "Post"))
     {
 
         <input asp-for="ProductID" type="hidden" value="@Model.ProductID" />
@@ -31,6 +31,5 @@
 
     }
 
-  
 
 </table>

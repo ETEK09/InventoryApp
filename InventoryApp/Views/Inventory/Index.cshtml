@@ -1,8 +1,14 @@
 ﻿@model IEnumerable<Inventory>
 
+
     <h2>Inventory</h2>
 
+    <div style="display:block">
+        <a href="/Inventory/InsertInventory/">Create New Item</a>
+    </div>
+
     <table class="table">
+
         <tr>
             <th>ProductID</th>
             <th>Inventory Tag</th>
@@ -13,17 +19,18 @@
             <th>Custodian</th>
         </tr>
 
-        @foreach (var inventory in Model)
-        {
-            <tr>
-                <td><a href="/Inventory/ViewInventory/@inventory.ProductID">@inventory.ProductID</a></td>
-                <td>@inventory.InventoryTag</td>
-                <td>@inventory.ProductName</td>
-                <td>@inventory.Description</td>
-                <td>@inventory.DateAssigned.ToString("d")</td>
-                <td>@inventory.Distributor</td>
-                <td>@inventory.Custodian</td>
-            </tr>
-       
-        }
-</table>
+    @foreach (var inventory in Model)
+    {
+        <tr>
+            <td><a href="/Inventory/ViewInventory/@inventory.ProductID">@inventory.ProductID</a></td>
+            <td>@inventory.InventoryTag</td>
+            <td>@inventory.ProductName</td>
+            <td>@inventory.Description</td>
+            <td>@inventory.DateAssigned.ToString("d")</td>
+            <td>@inventory.Distributor</td>
+            <td>@inventory.Custodian</td>
+        </tr>
+
+    }
+
+    </table>

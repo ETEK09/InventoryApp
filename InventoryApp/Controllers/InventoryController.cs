@@ -1,6 +1,6 @@
 ﻿using InventoryApp.Models;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel;
 
 namespace InventoryApp.Controllers
 {
@@ -8,10 +8,11 @@ namespace InventoryApp.Controllers
     {
         private readonly IInventoryRepository repo;
 
-        public InventoryController(IInventoryRepository repo)
+        public InventoryController(IInventoryRepository repo) 
         {
-            this.repo = repo;
-            
+        
+            this.repo = repo;      
+        
         }
         public IActionResult Index()
         {
@@ -21,7 +22,7 @@ namespace InventoryApp.Controllers
 
         public IActionResult ViewInventory(int id) 
         {
-
+        
             var inventory = repo.GetInventory(id);
             return View(inventory);
         
@@ -29,28 +30,46 @@ namespace InventoryApp.Controllers
         }
 
 
-        public IActionResult UpdateInventory (int id) 
+        public IActionResult UpdateInventory(int id) 
         {
-
+        
             Inventory inventory = repo.GetInventory(id);
 
             if(inventory == null) 
             {
             
-                return View("Item not found");
+              return View("Product not found");
+            
             
             }
+
             return View(inventory);
+                
+        }
+
+        public IActionResult UpdateInventoryToDatabase(Inventory inventory) 
+        {
+
+           repo.UpdateInventory(inventory);
+
+            return RedirectToAction("ViewInventory", new {id = inventory.ProductID});
+        
         
         }
 
 
-        public IActionResult UpdateInventoryToDatabase (Inventory inventory) 
+        public IActionResult InsertInventory(Inventory inventoryToInsert)
         {
 
-            repo.UpdateInventory(inventory);
+            return View(inventoryToInsert);
 
-            return RedirectToAction("ViewInventory", new {id = inventory.ProductID});
+        }
+
+        public IActionResult InsertInventoryToDatabase (Inventory inventoryToInsert) 
+        {
+        
+             repo.InsertInventory(inventoryToInsert);
+            return RedirectToAction("Index");
         
         
         }
