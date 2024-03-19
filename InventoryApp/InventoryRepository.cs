@@ -43,22 +43,36 @@ namespace InventoryApp
         }
 
 
-        public void InsertInventory(Inventory inventoryToInsert) 
+        public void InsertInventory(Inventory insertToInventory) 
         {
-
-            _conn.Execute("INSERT INTO inventory (productid, inventorytag, productname, description, dateassigned, distributor, custodian) VALUES (@productid, @inventorytag, @productname, @description, @dateassigned, @distributor, @custodian)", new 
+            _conn.Execute("Insert INTO inventory (productid, inventorytag, productname, description, dateassigned, distributor, custodian) VALUES (@productid, @inventorytag, @productname, @description, @dateassigned, @distributor, @custodian)", new
             {
-                productid = inventoryToInsert.ProductID,
-                inventorytag = inventoryToInsert.InventoryTag,
-                productname = inventoryToInsert.ProductName,
-                description = inventoryToInsert.Description,
-                dateassigned = inventoryToInsert.DateAssigned,
-                distributor = inventoryToInsert.Distributor,
-                custodian = inventoryToInsert.Custodian,
-                
-                
+                productid = insertToInventory.ProductID,
+                inventorytag = insertToInventory.InventoryTag,
+                productname = insertToInventory.ProductName,
+                description = insertToInventory.Description,
+                dateassigned = insertToInventory.DateAssigned,
+                distributor = insertToInventory.Distributor,
+                custodian = insertToInventory.Custodian
             });
 
+
         }
+
+        public void DeleteInventory(Inventory inventory) 
+        {
+
+            _conn.Execute("Delete from inventory where productid = @id;", new
+            {
+                id = inventory.ProductID
+            });
+        
+        
+        
+        }
+
+       
+
+       
     }
 }

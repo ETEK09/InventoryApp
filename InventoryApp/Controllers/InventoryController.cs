@@ -1,6 +1,7 @@
 ﻿using InventoryApp.Models;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
+using Mysqlx.Crud;
 
 namespace InventoryApp.Controllers
 {
@@ -57,21 +58,34 @@ namespace InventoryApp.Controllers
         
         }
 
-
-        public IActionResult InsertInventory(Inventory inventoryToInsert)
+        public IActionResult InsertInventory(Inventory insertToInventory) 
         {
 
-            return View(inventoryToInsert);
-
+            return View(insertToInventory);
+        
+        
         }
 
-        public IActionResult InsertInventoryToDatabase (Inventory inventoryToInsert) 
+        public IActionResult InsertInventoryToDatabase(Inventory insertToInventory) 
+        {
+
+            repo.InsertInventory(insertToInventory);
+
+            return RedirectToAction("Index");
+          
+        }
+
+
+        public IActionResult DeleteInventory(Inventory inventory) 
         {
         
-             repo.InsertInventory(inventoryToInsert);
+                repo.DeleteInventory(inventory);
+
             return RedirectToAction("Index");
         
         
         }
+
+
     }
 }

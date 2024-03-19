@@ -12,7 +12,9 @@ namespace InventoryApp
 
         public void UpdateInventory(Inventory inventory);
 
-        public void InsertInventory (Inventory inventoryToInsert);
+        public void InsertInventory(Inventory insertToInventory);
+
+        public void DeleteInventory(Inventory inventory);
 
     }
 }
