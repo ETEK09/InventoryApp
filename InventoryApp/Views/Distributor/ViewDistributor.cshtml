@@ -1,0 +1,25 @@
+﻿@model DistributorInventoriesViewModel
+
+<h2> @Model.Distributor.Name</h2>
+
+<table class="table">
+    <tr>
+        <th>DistributorID</th>
+        <th>Tag</th>
+        <th>Product Name</th>
+        <th>Description</th>
+        <th>Date Assigned</th>
+        <th>Custodian</th>
+    </tr>
+
+    @foreach (Inventory inventory in Model.DistributorInventories)
+    <tr>
+        <td>@Model.Distributor.DistributorID</td>
+        <td><@Model./td>
+        <td>@Model.ProductName</td>
+        <td>@Model.Description</td>
+        <td>@Model.DateAssigned</td>
+        <td>@Model.Custodian</td>
+    </tr>
+
+</table>

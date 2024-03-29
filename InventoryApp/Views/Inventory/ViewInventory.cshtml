@@ -1,12 +1,12 @@
 ﻿@model Inventory
 
-<h2>Tag# @Model.InventoryTag</h2>
+<h2>Tag# @Model.Tag</h2>
 
 <table class="table">
 
     <tr>
         <th>ProductID</th>
-        <th>Inventory Tag</th>
+        <th>Tag</th>
         <th>Product Name</th>
         <th>Description</th>
         <th>Date Assigned</th>
@@ -16,7 +16,7 @@
 
     <tr>
         <td>@Model.ProductID</td>
-        <td>@Model.InventoryTag</td>
+        <td>@Model.Tag</td>
         <td>@Model.ProductName</td>
         <td>@Model.Description</td>
         <td>@Model.DateAssigned.ToString("d")</td>

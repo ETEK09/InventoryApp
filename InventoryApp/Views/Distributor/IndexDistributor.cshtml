@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Distributor>
+
+<h2>Distributors</h2>
+
+<table class="table">
+    <tr>
+        <th>DistributorID</th>
+        <th>Name</th>
+    </tr>
+
+    @foreach (var distributor in Model)
+    {
+        <tr>
+            <td><a href="/Distributor/ViewDistributor/@distributor.DistributorID">@distributor.DistributorID</a></td>
+            <td>@distributor.Name</td>
+        </tr>
+    }
+
+</table>

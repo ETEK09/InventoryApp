@@ -29,9 +29,9 @@ namespace InventoryApp
         public void UpdateInventory(Inventory inventory) 
         {
         
-            _conn.Execute("Update inventory SET inventorytag = inventorytag, custodian = @custodian, dateassigned = @dateassigned, distributor = @distributor, productname = @productname, description = @description where productid = @productid", new 
+            _conn.Execute("Update inventory SET tag = @tag, custodian = @custodian, dateassigned = @dateassigned, distributor = @distributor, productname = @productname, description = @description where productid = @productid", new 
             { 
-                inventorytag = inventory.InventoryTag,
+                tag = inventory.Tag,
                 custodian = inventory.Custodian,
                 dateassigned = inventory.DateAssigned,
                 distributor = inventory.Distributor,
@@ -45,10 +45,10 @@ namespace InventoryApp
 
         public void InsertInventory(Inventory insertToInventory) 
         {
-            _conn.Execute("Insert INTO inventory (productid, inventorytag, productname, description, dateassigned, distributor, custodian) VALUES (@productid, @inventorytag, @productname, @description, @dateassigned, @distributor, @custodian)", new
+            _conn.Execute("Insert INTO inventory (productid, tag, productname, description, dateassigned, distributor, custodian) VALUES (@productid, @tag, @productname, @description, @dateassigned, @distributor, @custodian)", new
             {
                 productid = insertToInventory.ProductID,
-                inventorytag = insertToInventory.InventoryTag,
+                inventorytag = insertToInventory.Tag,
                 productname = insertToInventory.ProductName,
                 description = insertToInventory.Description,
                 dateassigned = insertToInventory.DateAssigned,
@@ -71,8 +71,21 @@ namespace InventoryApp
         
         }
 
-       
+        public IEnumerable<Distributor> GetALLDistributors() 
+        {
 
-       
+            return _conn.Query<Distributor>("SELECT * FROM Distributor");
+        
+        
+        }
+
+        public IEnumerable<Inventory> GetDistributorInventories(int id)
+        {
+
+            return _conn.Query<Inventory>("SELECT distributor.DistributorID, inventory.ProductID, inventory.Tag, inventory.ProductName, inventory.DateAssigned, inventory.Custodian FROM Distributor LEFT JOIN Inventory ON distributor.DistributorID = inventory.DistributorID WHERE distributor.DistributorID = @id", new { id = id });
+
+        }      
+
     }
+
 }

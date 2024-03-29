@@ -7,7 +7,7 @@
     {
         public int ProductID { get; set; }
 
-        public int InventoryTag { get; set; }
+        public int Tag { get; set; }
 
         public string ProductName { get; set; }
 
