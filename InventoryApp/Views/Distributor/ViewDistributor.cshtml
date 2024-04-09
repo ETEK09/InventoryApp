@@ -1,6 +1,7 @@
-﻿@model DistributorInventoriesViewModel
+﻿@using InventoryApp.Models;
+@model DistributorInventoriesViewModel;
 
-<h2> @Model.Distributor.Name</h2>
+<h2>@Model.Distributor.Name</h2>
 
 <table class="table">
     <tr>
@@ -12,14 +13,16 @@
         <th>Custodian</th>
     </tr>
 
-    @foreach (Inventory inventory in Model.DistributorInventories)
+    @foreach (var inventory in Model.ListOfInventories)
+    {
     <tr>
         <td>@Model.Distributor.DistributorID</td>
-        <td><@Model./td>
-        <td>@Model.ProductName</td>
-        <td>@Model.Description</td>
-        <td>@Model.DateAssigned</td>
-        <td>@Model.Custodian</td>
+        <td>@Model.Distributor.Tag</td>
+        <td>@inventory.ProductName</td>
+        <td>@inventory.Description</td>
+        <td>@inventory.DateAssigned</td>
+        <td>@inventory.Custodian</td>
     </tr>
+    }
 
 </table>

@@ -15,6 +15,8 @@ builder.Services.AddScoped<IDbConnection>((s) =>
 });
 
 builder.Services.AddTransient<IInventoryRepository, InventoryRepository>();
+builder.Services.AddTransient<IDistributorRepository, DistributorRepository>();
+
 var app = builder.Build();
 
 

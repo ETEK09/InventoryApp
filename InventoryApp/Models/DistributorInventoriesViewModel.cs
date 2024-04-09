@@ -4,7 +4,7 @@
     {
         public Distributor Distributor { get; set; }
 
-        public IEnumerable<Inventory> DistributorInventories { get; set; }
+        public IEnumerable<Inventory> ListOfInventories { get; set; }
 
     }
 }

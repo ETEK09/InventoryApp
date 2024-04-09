@@ -16,13 +16,8 @@ namespace InventoryApp
 
         public void DeleteInventory(Inventory inventory);
 
+       
 
-
-        //This will be the Distributor
-
-        public IEnumerable<Distributor> GetALLDistributors();
-
-        Distributor GetDistributor(int id);
 
     }
 }

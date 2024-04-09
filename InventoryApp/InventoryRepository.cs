@@ -71,20 +71,6 @@ namespace InventoryApp
         
         }
 
-        public IEnumerable<Distributor> GetALLDistributors() 
-        {
-
-            return _conn.Query<Distributor>("SELECT * FROM Distributor");
-        
-        
-        }
-
-        public IEnumerable<Inventory> GetDistributorInventories(int id)
-        {
-
-            return _conn.Query<Inventory>("SELECT distributor.DistributorID, inventory.ProductID, inventory.Tag, inventory.ProductName, inventory.DateAssigned, inventory.Custodian FROM Distributor LEFT JOIN Inventory ON distributor.DistributorID = inventory.DistributorID WHERE distributor.DistributorID = @id", new { id = id });
-
-        }      
 
     }
 

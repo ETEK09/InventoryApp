@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using InventoryApp.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace InventoryApp.Controllers
 {
     public class DistributorController : Controller
     {
-        private readonly IInventoryRepository repo;
+        private readonly IDistributorRepository repo;
 
-        public DistributorController (IInventoryRepository repo) 
+        public DistributorController (IDistributorRepository repo) 
         {
         
             this.repo = repo;
@@ -15,15 +16,20 @@ namespace InventoryApp.Controllers
 
         public IActionResult IndexDistributor()
         {
-            var distributor = repo.GetALLDistributors();
-            return View(distributor);
+            var distributors = repo.GetAllDistributors();
+            return View(distributors);
         }
 
-        public IActionResult ViewDistributor(int id)
+        public IActionResult ViewDistributor(int id) //What does the "id" value do in this method"
         {
-            var distributor = repo.GetDistributor(id);
-            return View(distributor);
-            
+            var distributorInventoryVM = new DistributorInventoriesViewModel
+            {
+                Distributor = repo.GetDistributor(id),
+                ListOfInventories = repo.GetAllDistributorInventories(id)
+            };
+
+            return View(distributorInventoryVM);
+
 
         }
 
