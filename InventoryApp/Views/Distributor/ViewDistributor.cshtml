@@ -17,7 +17,7 @@
     {
     <tr>
         <td>@Model.Distributor.DistributorID</td>
-        <td>@Model.Distributor.Tag</td>
+        <td>@inventory.Tag</td>                         
         <td>@inventory.ProductName</td>
         <td>@inventory.Description</td>
         <td>@inventory.DateAssigned</td>
@@ -26,3 +26,5 @@
     }
 
 </table>
+
+@*How come when I did @model.distributor.Tag, it didn't show the Tag number?*@

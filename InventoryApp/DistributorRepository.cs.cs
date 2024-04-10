@@ -30,7 +30,7 @@ namespace InventoryApp
 
         public IEnumerable<Inventory> GetAllDistributorInventories(int distributorID)
         {
-            return _conn.Query<Inventory>("SELECT distributor.DistributorID, inventory.ProductID, inventory.Tag, inventory.ProductName, inventory.DateAssigned, inventory.Custodian FROM Distributor LEFT JOIN Inventory ON distributor.DistributorID = inventory.DistributorID WHERE distributor.DistributorID = @id", new { id = distributorID });
+            return _conn.Query<Inventory>("SELECT distributor.DistributorID, inventory.Tag, inventory.ProductName, inventory.Description, inventory.DateAssigned, inventory.Custodian FROM Distributor LEFT JOIN Inventory ON distributor.DistributorID = inventory.DistributorID WHERE distributor.DistributorID = @id", new { id = distributorID });
         }
 
         
