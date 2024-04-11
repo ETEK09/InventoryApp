@@ -20,8 +20,16 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzdHJpYnV0b3JcSW5kZXhEaXN0cmlidXRvci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ericc/OneDrive/Desktop/Repos/InventoryApp/InventoryApp/Views/Distributor/UpdateDistributor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzdHJpYnV0b3JcVXBkYXRlRGlzdHJpYnV0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ericc/OneDrive/Desktop/Repos/InventoryApp/InventoryApp/Views/Distributor/ViewDistributor.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzdHJpYnV0b3JcVmlld0Rpc3RyaWJ1dG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ericc/OneDrive/Desktop/Repos/InventoryApp/InventoryApp/Views/Distributor/ViewDistributorInventory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGlzdHJpYnV0b3JcVmlld0Rpc3RyaWJ1dG9ySW52ZW50b3J5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ericc/OneDrive/Desktop/Repos/InventoryApp/InventoryApp/Views/Home/Index.cshtml]

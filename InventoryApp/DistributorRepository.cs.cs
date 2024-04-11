@@ -28,6 +28,19 @@ namespace InventoryApp
             
         }
 
+        public void UpdateDistributor (Distributor disstributorID) 
+        {
+
+            _conn.Execute("UPDATE distributor SET DistributorID = @DistributorID, Name = @Name, Email = @Email, Phone = @Phone", new
+            {
+                DistributorID = disstributorID.DistributorID,
+                Name = disstributorID.Name,
+                Email = disstributorID.Email,
+                Phone = disstributorID.Phone,
+            }); 
+        
+        }
+
         public IEnumerable<Inventory> GetAllDistributorInventories(int distributorID)
         {
             return _conn.Query<Inventory>("SELECT distributor.DistributorID, inventory.Tag, inventory.ProductName, inventory.Description, inventory.DateAssigned, inventory.Custodian FROM Distributor LEFT JOIN Inventory ON distributor.DistributorID = inventory.DistributorID WHERE distributor.DistributorID = @id", new { id = distributorID });

@@ -1,0 +1,30 @@
+﻿@using InventoryApp.Models;
+@model DistributorInventoriesViewModel;
+
+<h2>@Model.Distributor.Name</h2>
+
+<table class="table">
+    <tr>
+        <th>DistributorID</th>
+        <th>Tag</th>
+        <th>Product Name</th>
+        <th>Description</th>
+        <th>Date Assigned</th>
+        <th>Custodian</th>
+    </tr>
+
+    @foreach (var inventory in Model.ListOfInventories)
+    {
+    <tr>
+        <td>@Model.Distributor.DistributorID</td>
+        <td>@inventory.Tag</td>                         
+        <td>@inventory.ProductName</td>
+        <td>@inventory.Description</td>
+        <td>@inventory.DateAssigned</td>
+        <td>@inventory.Custodian</td>
+    </tr>
+    }
+
+</table>
+
+@*How come when I did @model.distributor.Tag, it didn't show the Tag number?*@

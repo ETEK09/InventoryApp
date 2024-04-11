@@ -6,13 +6,17 @@
     <tr>
         <th>DistributorID</th>
         <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
     </tr>
 
     @foreach (var distributor in Model)
     {
         <tr>
-            <td><a href="/Distributor/ViewDistributor/@distributor.DistributorID">@distributor.DistributorID</a></td>
-            <td>@distributor.Name</td>
+            <td><a href="/Distributor/ViewDistributorInventory/@distributor.DistributorID">@distributor.DistributorID</a></td>
+            <td><a href="/Distributor/ViewDistributor/@distributor.DistributorID">@distributor.Name</a></td>
+            <td>@distributor.Email</td>
+            <td>@distributor.Phone</td>
         </tr>
     }
 

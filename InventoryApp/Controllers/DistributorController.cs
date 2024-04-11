@@ -1,5 +1,6 @@
 ﻿using InventoryApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Cryptography.X509Certificates;
 
 namespace InventoryApp.Controllers
 {
@@ -20,7 +21,15 @@ namespace InventoryApp.Controllers
             return View(distributors);
         }
 
-        public IActionResult ViewDistributor(int id) //What does the "id" value do in this method"
+        public IActionResult ViewDistributor(int id) 
+        {
+        
+            var distributor = repo.GetDistributor(id);
+            return View(distributor);
+        
+        
+        }
+        public IActionResult ViewDistributorInventory(int id) //What does the "id" value do in this method"
         {
             var distributorInventoryVM = new DistributorInventoriesViewModel
             {
@@ -30,7 +39,34 @@ namespace InventoryApp.Controllers
 
             return View(distributorInventoryVM);
 
+        }
 
+
+        public IActionResult UpdateDistributor(int id) 
+        {
+
+            Distributor distributor = repo.GetDistributor(id);
+            {
+                if (distributor == null) 
+                {
+                
+                    return View (null);
+                
+                }
+
+                return View(distributor);
+
+            }      
+        
+        }
+
+        public IActionResult UpdateDistributorToDatabase(Distributor distributor) 
+        {
+
+            repo.UpdateDistributor(distributor);
+            return RedirectToAction("ViewDistributor", new {id = distributor.DistributorID});
+        
+              
         }
 
     }

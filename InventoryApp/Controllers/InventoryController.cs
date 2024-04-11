@@ -31,7 +31,7 @@ namespace InventoryApp.Controllers
         }
 
 
-        public IActionResult UpdateInventory(int id) 
+        public IActionResult UpdateInventory(int id) ///Why is it id//?
         {
         
             Inventory inventory = repo.GetInventory(id);

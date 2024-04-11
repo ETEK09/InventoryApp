@@ -62,12 +62,11 @@ namespace InventoryApp
         public void DeleteInventory(Inventory inventory) 
         {
 
-            _conn.Execute("Delete from inventory where productid = @id;", new
+            _conn.Execute("Delete from inventory whe productid = @id;", new
             {
                 id = inventory.ProductID
             });
-        
-        
+           
         
         }
 

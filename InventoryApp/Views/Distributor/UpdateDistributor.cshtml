@@ -1,0 +1,24 @@
+﻿@model Distributor
+
+<h2>@Model.Name</h2>
+
+<table class="table">
+
+    @using (Html.BeginForm("UpdateDistributorToDataBase", "Distributor", "Post"))
+    {
+        <input asp-for="DistributorID" type="hidden" value="@Model.DistributorID">
+
+        <label asp-for="Name" class="control-label">Name</label>
+        <input type="text" name="name" class="form-control" value="@Model.Name" />
+
+        <label asp-for="Email" class="control-label">Email</label>
+        <input type="text" name="Email" class="form-control" value="@Model.Email" />
+
+        <label asp-for="Phone" class="control-label">Phone</label>
+        <input type="text" name="Phone" class="form-control" value="@Model.Phone" />
+
+        <input type="submit" value="Submit Update" class="btn btn-primary" />
+                
+    }
+
+</table>
