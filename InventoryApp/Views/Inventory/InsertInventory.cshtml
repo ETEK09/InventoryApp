@@ -19,17 +19,14 @@
         <input type="text" name="DateAssigned" class="form-control" value="@Model.DateAssigned" />
 
         <div class="form-group">
-            <label for="">Select a Category</label>
-            <select class="form-control" name="DName" value="">
-                @foreach (var cat in Model.DName)
-                {
-                    <option value="@Model.DName">@Model.DName @Model.DName</option>
-                }
+            <label for="">Select a Distributor</label>
+            <select class="form-control" name="DistributorID" value="">
+            @foreach (var distributor in Model.ListOfDistributors)
+            {
+                <option value="@distributor.DistributorID">@distributor.DistributorID @distributor.DName</option>
+            }
             </select>
         </div>
-
-        <label asp-for="DName" class="control-label">DName</label>
-        <input type="text" name="DName" class="form-control" value="@Model.DName" />
 
         <label asp-for="ProductName" class="control-label">Product Name</label>
         <input type="text" name="ProductName" class="form-control" value="@Model.ProductName" />

@@ -17,11 +17,9 @@
 
         public int DistributorID { get; set; }
 
-        public string Distributor { get; set; }
-
         public string DName { get; set; }
-
-
         public string Custodian { get; set; }
+
+        public IEnumerable<Distributor> ListOfDistributors { get; set; }
     }
 }

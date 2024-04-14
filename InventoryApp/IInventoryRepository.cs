@@ -15,6 +15,10 @@ namespace InventoryApp
 
         public void InsertInventory(Inventory insertToInventory);
 
+        public IEnumerable<Distributor> GetADistributor();
+
+        public Inventory AssignDistributor();
+
         public void DeleteInventory(Inventory inventory);
 
        

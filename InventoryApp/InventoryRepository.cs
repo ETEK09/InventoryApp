@@ -51,24 +51,40 @@ namespace InventoryApp
 
         }
 
+        public Inventory AssignDistributor()
+        {
+            var distributorlist = GetADistributor();
+            var inventory = new Inventory();
+            inventory.ListOfDistributors = distributorlist;
+            return inventory;
+        }
+
 
 
 
         public void InsertInventory(Inventory insertToInventory) 
         {
-            _conn.Execute("Insert INTO inventory (productid, tag, productname, description, dateassigned, Dname, custodian) VALUES (@productid, @tag, @productname, @description, @dateassigned, @dname, @custodian)", new
+            _conn.Execute("Insert INTO inventory (productid, tag, productname, description, dateassigned, distributorID, Dname, custodian) VALUES (@productid, @tag, @productname, @description, @dateassigned, @distributorID, @dname, @custodian)", new
             {
                 productid = insertToInventory.ProductID,
                 tag = insertToInventory.Tag,
                 productname = insertToInventory.ProductName,
                 description = insertToInventory.Description,
                 dateassigned = insertToInventory.DateAssigned,
+                distributorid = insertToInventory.DistributorID,
                 dname = insertToInventory.DName,
                 custodian = insertToInventory.Custodian
             });
 
 
         }
+
+        public IEnumerable<Distributor> GetADistributor()
+        {
+            return _conn.Query<Distributor>("SELECT * FROM distributor;");
+        }
+
+
 
         public void DeleteInventory(Inventory inventory) 
         {
@@ -82,6 +98,7 @@ namespace InventoryApp
         
         }
 
+       
     }
 
 }

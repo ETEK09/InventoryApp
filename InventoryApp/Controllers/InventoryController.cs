@@ -69,12 +69,18 @@ namespace InventoryApp.Controllers
         
         }
 
-        public IActionResult InsertInventory(Inventory insertToInventory) 
-        {
+        //public IActionResult InsertInventory(Inventory insertToInventory) 
+        //{
 
-            return View(insertToInventory);
-        
-        
+        //    return View(insertToInventory);
+
+
+        //}
+
+        public IActionResult InsertInventory()
+        {
+            var inventory = repo.AssignDistributor();
+            return View(inventory);
         }
 
         public IActionResult InsertInventoryToDatabase(Inventory insertToInventory) 
