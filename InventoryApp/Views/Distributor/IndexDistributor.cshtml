@@ -2,10 +2,15 @@
 
 <h2>Distributors</h2>
 
+
+<div style="display:block">
+    <a href="/Distributor/InsertDistributor">Create Distributor</a>
+</div>
+
 <table class="table">
     <tr>
         <th>DistributorID</th>
-        <th>Name</th>
+        <th>DName</th>
         <th>Email</th>
         <th>Phone</th>
     </tr>
@@ -14,7 +19,7 @@
     {
         <tr>
             <td><a href="/Distributor/ViewDistributorInventory/@distributor.DistributorID">@distributor.DistributorID</a></td>
-            <td><a href="/Distributor/ViewDistributor/@distributor.DistributorID">@distributor.Name</a></td>
+            <td><a href="/Distributor/ViewDistributor/@distributor.DistributorID">@distributor.DName</a></td>
             <td>@distributor.Email</td>
             <td>@distributor.Phone</td>
         </tr>

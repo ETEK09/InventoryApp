@@ -17,8 +17,19 @@ namespace InventoryApp.Controllers
         }
         public IActionResult Index()
         {
+
             var inventory = repo.GetAllInventory();
             return View(inventory);
+            //var InventoryDistributorList = new DistributorInventoriesViewModel
+            //{
+
+
+            //    Distributor = repo.GetInventoriesAndDistributor(id),
+            //    ListOfInventories = repo.GetAllDistributorInventories(id)
+
+            //};
+        
+            //return View(InventoryDistributorList);
         }
 
         public IActionResult ViewInventory(int id) 
@@ -69,7 +80,7 @@ namespace InventoryApp.Controllers
         public IActionResult InsertInventoryToDatabase(Inventory insertToInventory) 
         {
 
-            repo.InsertInventory(insertToInventory);
+            repo.InsertInventory(insertToInventory); ///Go over this method here//
 
             return RedirectToAction("Index");
           

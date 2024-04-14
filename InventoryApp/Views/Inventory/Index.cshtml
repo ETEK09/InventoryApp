@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<Inventory>
 
-
     <h2>Inventory</h2>
 
     <div style="display:block">
@@ -15,7 +14,7 @@
             <th>Product Name</th>
             <th>Description</th>
             <th>Date Assigned</th>
-            <th>Distributor</th>
+            <th>DName</th>
             <th>Custodian</th>
         </tr>
 
@@ -27,7 +26,7 @@
             <td>@inventory.ProductName</td>
             <td>@inventory.Description</td>
             <td>@inventory.DateAssigned.ToString("d")</td>
-            <td>@inventory.Distributor</td>
+            <td>@inventory.DName</td>
             <td>@inventory.Custodian</td>
         </tr>
 

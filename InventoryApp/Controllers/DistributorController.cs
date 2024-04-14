@@ -64,10 +64,45 @@ namespace InventoryApp.Controllers
         {
 
             repo.UpdateDistributor(distributor);
+
             return RedirectToAction("ViewDistributor", new {id = distributor.DistributorID});
         
-              
+             
+            
         }
+
+        public IActionResult InsertDistributor(Distributor InsertToDistributor) 
+        {
+            
+            return View(InsertToDistributor);
+        
+        
+        }
+
+
+        public IActionResult InsertDistributorToDataBase (Distributor distributor) 
+        {
+
+            repo.InsertDistributor(distributor);
+
+           return RedirectToAction("IndexDistributor");  //Understand this method more
+
+        
+        
+        
+        }
+
+        public IActionResult DeleteDistributor(Distributor distributor)
+        {
+
+            repo.DeleteDistributor(distributor);
+
+            return RedirectToAction("IndexDistributor");
+
+
+        }
+
+
 
     }
 }

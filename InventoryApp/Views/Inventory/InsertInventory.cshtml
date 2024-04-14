@@ -18,8 +18,18 @@
         <label asp-for="DateAssigned" class="control-label">Date Assigned</label>
         <input type="text" name="DateAssigned" class="form-control" value="@Model.DateAssigned" />
 
-        <label asp-for="Distributor" class="control-label">Distributor</label>
-        <input type="text" name="Distributor" class="form-control" value="@Model.Distributor" />
+        <div class="form-group">
+            <label for="">Select a Category</label>
+            <select class="form-control" name="DName" value="">
+                @foreach (var cat in Model.DName)
+                {
+                    <option value="@Model.DName">@Model.DName @Model.DName</option>
+                }
+            </select>
+        </div>
+
+        <label asp-for="DName" class="control-label">DName</label>
+        <input type="text" name="DName" class="form-control" value="@Model.DName" />
 
         <label asp-for="ProductName" class="control-label">Product Name</label>
         <input type="text" name="ProductName" class="form-control" value="@Model.ProductName" />

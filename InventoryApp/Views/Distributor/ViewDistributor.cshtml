@@ -1,6 +1,6 @@
 ﻿@model Distributor
 
-<h2>@Model.Name</h2>
+<h2>@Model.DName</h2>
 
 <table class="table">
     <tr>
@@ -12,7 +12,7 @@
 
     <tr>
         <td>@Model.DistributorID</td>
-        <td>@Model.Name</td>
+        <td>@Model.DName</td>
         <td>@Model.Email</td>
         <td>@Model.Phone</td>
     </tr>
@@ -20,6 +20,17 @@
 
     <div style="display:block">
         <a href="/Distributor/UpdateDistributor/@Model.DistributorID">Update Distributor</a>
+    </div>
+
+    <div style="display:block">
+        @using (Html.BeginForm("DeleteDistributor", "Distributor", "Post"))
+        {
+
+            <input type="hidden" asp-for="DistributorID" value="@Model.DistributorID" />
+
+            <input type="submit" onclick="return confirm('Are you sure?')" value="Delete Distributor" />
+
+        }
     </div>
 
 

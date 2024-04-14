@@ -11,6 +11,10 @@ namespace InventoryApp
 
         public void UpdateDistributor (Distributor distributor); //Why is the parameter Distributor instead of id and why return type is void/
 
+        public void InsertDistributor (Distributor distributor);
+
+        public void DeleteDistributor(Distributor distributor);
+
 
     }
 }

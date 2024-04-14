@@ -1,10 +1,10 @@
 ﻿@model Distributor
 
-<h2>@Model.DName</h2>
+<h2>Update @Model.DName</h2>
 
 <table class="table">
 
-    @using (Html.BeginForm("UpdateDistributorToDataBase", "Distributor", "Post"))
+    @using (Html.BeginForm("InsertDistributorToDatabase", "Distributor", "Post"))
     {
         <input asp-for="DistributorID" type="hidden" value="@Model.DistributorID">
 
@@ -17,8 +17,7 @@
         <label asp-for="Phone" class="control-label">Phone</label>
         <input type="text" name="Phone" class="form-control" value="@Model.Phone" />
 
-        <input type="submit" value="Submit Update" class="btn btn-primary" />
-                
+        <input type="submit" value="Create Item" class="btn btn-primary" />
+
     }
 
-</table>

@@ -7,6 +7,7 @@ namespace InventoryApp
     public interface IInventoryRepository
     {
         public IEnumerable<Inventory> GetAllInventory();
+        public IEnumerable<Distributor> GetInventoriesAndDistributor (int id);
 
         public Inventory GetInventory(int id);
 

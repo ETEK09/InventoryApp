@@ -1,5 +1,6 @@
 ﻿using Dapper;
 using InventoryApp.Models;
+using MySql.Data.MySqlClient;
 using System.Data;
 
 namespace InventoryApp
@@ -16,7 +17,18 @@ namespace InventoryApp
 
         public IEnumerable<Inventory> GetAllInventory()
         {
-            return _conn.Query<Inventory>("Select * from inventory");
+
+            //return _conn.Query<Inventory>("SELECT * FROM inventory");
+            return _conn.Query<Inventory>("Select inventory.ProductID, inventory.Tag, inventory.ProductName, inventory.Description, inventory.DateAssigned, distributor.DName, inventory.Custodian FROM inventory LEFT JOIN distributor ON inventory.DistributorID = distributor.DistributorID");
+        }
+
+        public IEnumerable<Distributor> GetInventoriesAndDistributor(int id)
+        {
+            return _conn.Query<Distributor>("Select inventory.ProductID, inventory.Tag, inventory.ProductName, inventory.Description, inventory.DateAssigned, distributor.DName, inventory.Custodian FROM inventory LEFT JOIN distributor ON inventory.DistributorID = distributor.DistributorID WHERE inventory.ProductID = @id", new
+
+            {
+                id = id,
+            });
         }
 
         public Inventory GetInventory(int id) 
@@ -26,33 +38,32 @@ namespace InventoryApp
                
         }
 
-        public void UpdateInventory(Inventory inventory) 
+
+        public void UpdateInventory(Inventory inventory)
         {
-        
-            _conn.Execute("Update inventory SET tag = @tag, custodian = @custodian, dateassigned = @dateassigned, distributor = @distributor, productname = @productname, description = @description where productid = @productid", new 
-            { 
-                tag = inventory.Tag,
-                custodian = inventory.Custodian,
-                dateassigned = inventory.DateAssigned,
-                distributor = inventory.Distributor,
-                productname = inventory.ProductName,
-                description = inventory.Description,
-                productid = inventory.ProductID
-            });       
-        
+
+            _conn.Execute("Update inventory SET  ProductName = @productname", new
+            {
+              
+                productname = inventory.ProductName
+                
+            });
+
         }
+
+
 
 
         public void InsertInventory(Inventory insertToInventory) 
         {
-            _conn.Execute("Insert INTO inventory (productid, tag, productname, description, dateassigned, distributor, custodian) VALUES (@productid, @tag, @productname, @description, @dateassigned, @distributor, @custodian)", new
+            _conn.Execute("Insert INTO inventory (productid, tag, productname, description, dateassigned, Dname, custodian) VALUES (@productid, @tag, @productname, @description, @dateassigned, @dname, @custodian)", new
             {
                 productid = insertToInventory.ProductID,
-                inventorytag = insertToInventory.Tag,
+                tag = insertToInventory.Tag,
                 productname = insertToInventory.ProductName,
                 description = insertToInventory.Description,
                 dateassigned = insertToInventory.DateAssigned,
-                distributor = insertToInventory.Distributor,
+                dname = insertToInventory.DName,
                 custodian = insertToInventory.Custodian
             });
 
@@ -62,14 +73,14 @@ namespace InventoryApp
         public void DeleteInventory(Inventory inventory) 
         {
 
-            _conn.Execute("Delete from inventory whe productid = @id;", new
+            _conn.Execute("Delete from inventory where productid = @id;", new
             {
                 id = inventory.ProductID
+
             });
            
         
         }
-
 
     }
 
