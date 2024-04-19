@@ -2,7 +2,65 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - InventoryApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <style>
+        /* Custom CSS styles */
+        body {
+            background: linear-gradient(to bottom, #ff9800, #9c27b0); /* Orange to purple gradient */
+            font-family: Arial, sans-serif;
+            color: #fff; /* White text color for better contrast */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 50px;
+        }
+
+        .display-4 {
+            color: #fff; /* White */
+        }
+
+        p {
+            color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+        }
+
+        a {
+            color: #ffc107; /* Yellow */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+            a:hover {
+                color: #ffeb3b; /* Light yellow */
+            }
+
+        .btn-custom {
+            background-color: #4caf50; /* Green */
+            border-color: #4caf50;
+            color: #fff; /* White */
+            transition: all 0.3s ease;
+        }
+
+            .btn-custom:hover {
+                background-color: #388e3c; /* Dark green */
+                border-color: #388e3c;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center">
+            <h1 class="display-4">Welcome to Invy!</h1>
+            <p>This is a simple and powerful inventory management system.</p>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -33,21 +33,31 @@ namespace InventoryApp
 
         public Inventory GetInventory(int id) 
         {
+            return _conn.QuerySingle<Inventory>("Select inventory.ProductID, inventory.Tag, inventory.ProductName, inventory.Description, inventory.DateAssigned, distributor.DName, inventory.Custodian FROM inventory LEFT JOIN distributor ON inventory.DistributorID = distributor.DistributorID WHERE inventory.ProductID = @id", new
 
-            return _conn.QuerySingle<Inventory>("Select * from inventory where productid = @id", new {id = id});
-               
+            {
+                id = id,
+            });
+
+            //return _conn.QuerySingle<Inventory>("Select * from inventory where productid = @id", new {id = id});
+
         }
 
 
         public void UpdateInventory(Inventory inventory)
         {
 
-            _conn.Execute("Update inventory SET  ProductName = @productname", new
-            {
-              
-                productname = inventory.ProductName
-                
-            });
+                _conn.Execute("Update inventory SET Tag = @tag, DName = @dname, DateAssigned = @dateassigned, DistributorID = distributorid, ProductName = @productname, Description = @description where ProductID = @productid", new
+                {
+                    tag = inventory.Tag,
+                    dname = inventory.Dname,
+                    dateassigned = inventory.DateAssigned,
+                    distributorid = inventory.DistributorID,
+                    productname = inventory.ProductName,
+                    description = inventory.Description,
+                    productid = inventory.ProductID
+                });
+
 
         }
 
@@ -64,7 +74,7 @@ namespace InventoryApp
 
         public void InsertInventory(Inventory insertToInventory) 
         {
-            _conn.Execute("Insert INTO inventory (productid, tag, productname, description, dateassigned, distributorID, Dname, custodian) VALUES (@productid, @tag, @productname, @description, @dateassigned, @distributorID, @dname, @custodian)", new
+            _conn.Execute("Insert INTO inventory (productid, tag, productname, description, dateassigned, distributorID, dname, custodian) VALUES (@productid, @tag, @productname, @description, @dateassigned, @distributorID, @dname, @custodian)", new
             {
                 productid = insertToInventory.ProductID,
                 tag = insertToInventory.Tag,
@@ -72,7 +82,7 @@ namespace InventoryApp
                 description = insertToInventory.Description,
                 dateassigned = insertToInventory.DateAssigned,
                 distributorid = insertToInventory.DistributorID,
-                dname = insertToInventory.DName,
+                dname = insertToInventory.Dname,
                 custodian = insertToInventory.Custodian
             });
 

@@ -25,11 +25,32 @@
             <td>@inventory.Tag</td>
             <td>@inventory.ProductName</td>
             <td>@inventory.Description</td>
-            <td>@inventory.DateAssigned.ToString("d")</td>
-            <td>@inventory.DName</td>
+            <td class="dateAssigned">@inventory.DateAssigned.ToString("MM/dd/yyyy")</td>
+            <td>@inventory.Dname</td>
             <td>@inventory.Custodian</td>
         </tr>
 
     }
+
+
+
+
+
+    @*<script>
+        // JavaScript code to add event listener to table rows
+        document.addEventListener("DOMContentLoaded", function () {
+            var tableRows = document.querySelectorAll("#inventoryTable tr");
+
+            tableRows.forEach(function (row) {
+                row.addEventListener("click", function () {
+                    // Get the ProductID from the first cell of the clicked row
+                    var productId = this.cells[0].textContent;
+
+                    // Redirect to the ViewInventory page for the clicked ProductID
+                    window.location.href = "/Inventory/ViewInventory/" + productId;
+                });
+            });
+        });
+    </script>*@
 
     </table>

@@ -9,34 +9,72 @@
 
         <input asp-for="ProductID" type="hidden" value="@Model.ProductID" />
 
-        <label asp-for="Tag" class="control-label">Tag</label>
-        <input type="text" name="Tag" class="form-control" value="@Model.Tag" />
+        <label asp-for="Tag" class="control-label">Tag <span style="color: red;">*</span></label>
+        <input type="text" name="Tag" id="tagInput" class="form-control" value="@Model.Tag" required />
 
         <label asp-for="Custodian" class="control-label">Custodian</label>
         <input type="text" name="Custodian" class="form-control" value="@Model.Custodian" />
 
         <label asp-for="DateAssigned" class="control-label">Date Assigned</label>
-        <input type="text" name="DateAssigned" class="form-control" value="@Model.DateAssigned" />
+        <input type="date" name="DateAssigned" id="dateAssigned" class="form-control" />
 
         <div class="form-group">
             <label for="">Select a Distributor</label>
             <select class="form-control" name="DistributorID" value="">
-            @foreach (var distributor in Model.ListOfDistributors)
-            {
-                <option value="@distributor.DistributorID">@distributor.DistributorID @distributor.DName</option>
-            }
+                @foreach (var distributor in Model.ListOfDistributors)
+                {
+                    <option value="@distributor.DistributorID">@distributor.DistributorID @distributor.DName</option>
+                }
             </select>
         </div>
 
-        <label asp-for="ProductName" class="control-label">Product Name</label>
-        <input type="text" name="ProductName" class="form-control" value="@Model.ProductName" />
+        <label asp-for="ProductName" class="control-label">Product Name <span style="color: red;">*</span></label>
+        <input type="text" name="ProductName" class="form-control" value="@Model.ProductName" required />
 
-        <label asp-for="Description" class="control-label">Description</label>
-        <input type="text" name="Description" class="form-control" value="@Model.Description" />
+        <label asp-for="Description" class="control-label">Description <span style="color: red;">*</span></label>
+        <input type="text" name="Description" class="form-control" value="@Model.Description" required />
 
-        <input type="submit" value="Create Item" class="btn btn-primary" />
-
+        <input type="submit" id="submitButton" value="Create Item" class="btn btn-primary" disabled /> <!-- Disabled by default -->
     }
+
+     
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                var tagInput = document.getElementById("tagInput");
+                var submitButton = document.getElementById("submitButton");
+
+                tagInput.addEventListener("input", function () {
+                    var tagValue = tagInput.value;
+                    var alphanumericRegex = /^[a-zA-Z0-9]*$/; // Regex to allow only alphanumeric characters
+
+                    if (tagValue.length > 0 && alphanumericRegex.test(tagValue)) {
+                        submitButton.disabled = false; // Enable the submit button
+                    } else {
+                        submitButton.disabled = true; // Disable the submit button
+                    }
+                });
+            });
+        </script>
+
+
+    <script>
+        var today = new Date(); // Get the current date
+        var year = today.getFullYear();
+        var month = today.getMonth() + 1; // Months are zero-based, so we add 1
+        var day = today.getDate();
+
+        var formattedDate = year + '-' + addZero(month) + '-' + addZero(day);
+
+        function addZero(number) {
+            // Function to add leading zero if number is less than 10
+            return number < 10 ? '0' + number : number;
+        }
+
+        // Set the max attribute of the date input field to today's date
+        document.getElementById("dateAssigned").max = formattedDate;
+    </script>
 
 
 </table>
